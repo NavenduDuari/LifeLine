@@ -19,4 +19,4 @@
 3. materialize css
 4. mongodb(mlab)
 
-[Click here](https://blood-bank-demo.herokuapp.com/) to visit the app online.
+[Click here](https://life-line-demo.herokuapp.com/) to visit the app online.
