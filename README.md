@@ -1,7 +1,7 @@
 # blood-bank-demo
 ### To run the app locally
 1. Install node.js (https://nodejs.org/)
-2. clone the repository using ***git clone https://github.com/NavenduDuari/LifeShare.git***
+2. clone the repository using ***git clone https://github.com/NavenduDuari/LifeLine.git***
 3. ***cd*** to the cloned repository
 4. ***npm install***
 5. ***npm start***
