@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper grey lighten-4">
+                <a href="/home.html" class="left brand-logo grey-text text-darken-4">LifeLine</a>
+                <ul id="nav-mobile" class="right ">
+                    <li ><a href="/join.html" class="grey-text text-darken-4">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div id="search"></div>
+        </div>
+    </div>
+    
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    
+    <script type="text/babel">
+        var searchMade = false;
+        class Search extends React.Component{
+            state={
+                donors:[]
+            }
+            handleSubmit=(e)=>{
+                searchMade = true;
+                e.preventDefault();
+                var element = document.getElementById("bloodGroup");
+                var bloodGroup = element.options[element.selectedIndex].value;
+                var url = '/donors?bloodGroup='+ encodeURIComponent(bloodGroup);
+                fetch(url)
+                .then(response=>{
+                    return response.json()
+                })
+                .then(donors=>{
+                    this.setState({donors});
+                });
+            }
+            render(){
+                var donorList=this.state.donors.map((donor,index)=>{
+                    return(
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <div class="card grey lighten-4">
+                                    <div class="card-content grey-text text-darken-4">
+                                        <ul>
+                                            <li><strong>Name :</strong>{donor.name}</li>
+                                            <li><strong>Blood Group :</strong>{donor.bloodGroup}</li>
+                                            <li><strong>Contact no. :</strong>{donor.contact}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       
+                    );
+                });
+                return(
+                    <div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <div class="card grey lighten-4">
+                                    <div class="card-content grey-text text-darken-4">
+                                        <span class="card-title">Search Blood Group</span>
+                                        <div class="input-field">
+                                        <select id="bloodGroup" class="browser-default">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select><br/>
+                                        <button onClick={this.handleSubmit} className="btn grey darken-4">Search</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={searchMade?"container":"hide"}>
+                            {this.state.donors.length?<h3><strong>Search results</strong></h3> : <h3><strong>No result found</strong></h3> }
+                            {donorList}
+                        </div>
+                    </div>
+                );
+            };       
+        };
+        ReactDOM.render(<Search/>,document.getElementById('search'));      
+    </script>
+</body>
+
+</html>

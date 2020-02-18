@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Join</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper grey lighten-4">
+                <a href="/home.html" class="left brand-logo grey-text text-darken-4">LifeLine</a>
+                <ul id="nav-mobile" class="right ">
+                    <li ><a href="/join.html" class="grey-text text-darken-4">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card grey lighten-4">
+                        <div class="card-content grey-text text-darken-4">
+                            <span class="card-title">Become blood donor</span>
+                            <form method="POST" action="/donors" enctype="application/x-www-form-urlencoded" id="form">
+                                <input name="name" type="text" placeholder="Name">
+                                <input name="contact" type="text" placeholder="Contact no.">
+                                <div class="input-field">
+                                    <select id="bloodGroup" name="bloodGroup" class="browser-default">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select><br/>
+                                </div>
+                                <input type="submit" value="Submit" class="btn grey darken-4">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+
+</html>
